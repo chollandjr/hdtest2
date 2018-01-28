@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NPS Helpdesk Landing Page</title>
+  <!--<link href="css/custom.css" rel="stylesheet"> -->
+  <!-- less elements -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:400,700">
+  <link rel="stylesheet/less" type="text/css" href="css/styles.less" />
+</head>
+
+<body>
+
+  <div id=jumbo1 class="jumbotron">
+    <h1 class="display-4">NPS Helpdesk</h1> Welcome. We are happy to help.
+  </div>
+
+  <a href="https://status.npsct.org" target="_blank">
+    <div id=status class="alert" role="alert" >
+    This is a success alert—check it out!
+  </div> </a>
+
+  <div id="announce" class="card" hidden>
+    <!-- add/remove hidden tag hide/display this element -->
+    <h5 class="card-header">Announcements:</h5>
+    <div class="card-body">
+      <h6 class="card-title">Special IT Announcement</h6>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    </div>
+  </div>
+
+  <div id="maintenance" class="card">
+    <h5 class="card-header">Upcoming Maintenance:</h5>
+<!--    <div class="card-body">
+      <h6 class="card-title">Maintenance One:</h6>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    </div>
+    <div class="cardrule">
+      <hr>
+    </div>
+    <div class="card-body">
+      <h6 class="card-title">Maintenance Two:</h6>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    </div -->
+  </div>
+
+  <div id=accordion1head>
+    Please choose from one of the categories below to submit a new request:
+  </div>
+
+  <div id="accordion1" role="tablist" aria-multiselectable="true">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">A device or software is not working as it should. (IT Request)</button>
+      </h5>
+      </div>
+
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion1">
+        <div class="card-body">
+          Click the button to request a repair for device or software. <a class="btn btn-primary btn-lg" href="https://nboe.npsct.org:8443/WorkOrder.do?reqTemplate=3404" role="button">Repair »</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Help using classroom technology. (Ed Tech Request)</button>
+      </h5>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion1">
+        <div class="card-body">
+          Click the button to request help with using a device or software. <a class="btn btn-primary btn-lg" href="https://nboe.npsct.org:8443/WorkOrder.do?reqTemplate=3403" role="button">How To »</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Powerschool & Gradebook (Student Data Systems)</button>
+      </h5>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion1">
+        <div class="card-body">
+          Click button to request help with Powerschool, Gradebook, or other student data system. <a class="btn btn-primary btn-lg" href="https://nboe.npsct.org:8443/WorkOrder.do?reqTemplate=3402" role="button">Powerschool »</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    less = {
+      env: "development",
+    };
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js"></script>
+  <script src="js/moment.min.js">//source and docs @ https://momentjs.com/</script>
+
+  <script type="text/javascript">
+    $.ajax({
+      url: './status.json',
+      dataType: 'json',
+      method: 'get',
+      cache: false,
+      success: function(data) {
+        //console.log(data);
+        $(data).each(function(index, item) {
+          //console.log();
+
+          if (item.data.status == "success") {
+            document.getElementById("status").className = 'alert success';
+          }
+          if (item.data.status == "info") {
+            document.getElementById("status").className = 'alert info';
+          }
+          if (item.data.status == "danger") {
+            document.getElementById("status").className = 'alert danger';
+          }
+          {
+            document.getElementById("status").innerHTML = (item.data.message) + " : Click for more details."
+          };
+        })
+      }
+    });
+  </script>
+
+  <script type="text/javascript">
+    var today = new Date();
+    $.ajax({
+      url: './schedules.json',
+      dataType: 'json',
+      method: 'get',
+      cache: false,
+      success: function(data) {
+        //console.log(data);
+        $.each(data, function(index, item) {
+          $.each(item, function(key, value) {
+            console.log(item[key].scheduled_at);
+            console.log(item[key].name);
+            console.log(item[key].message);
+
+            if ((Date.parse(item[key].scheduled_at)) >= (Date.parse(today))) {
+              document.getElementById("maintenance");
+
+              maintdate = moment(item[key].scheduled_at).format('LLL');
+              mainttime = moment(item[key].scheduled_at).format('MM/DD/YYYY');
+              maintfromnow = moment(item[key].scheduled_at).fromNow();
+              maintcal = moment(item[key].scheduled_at).calendar();
+              mainttitle = (item[key].name) + " - " + maintfromnow + ": (" + maintcal + ")";
+              mainttext = (item[key].message);
+              //console.log(mainthead);console.log(maintmessage);console.log(maintdate);console.log(maintfromnow);console.log(maintcal);
+
+              //add div for first maint, populate, format
+              var oDiv = document.getElementById("maintenance");
+              //oDiv.id = 'maintenance';
+
+              // Create the inner div before appending to the body
+              var iDiv = document.createElement('div');
+              iDiv.className = 'card-body' + [key];
+              oDiv.appendChild(iDiv);
+              //console.log(iDiv);
+
+              //pupulate the divs
+              var appendText1 = '<h6 class="card-title">'+(mainttitle)+'</h6>';
+              var appendText2 = '<p class="card-text">'+(mainttext)+'</p>';
+              var fullAppend = (appendText1)+(appendText2);
+              //console.log(fullAppend);
+              var currentCard = '.card-body'+[key];
+              $(currentCard).append(fullAppend);
+//              document.getElementById("card-body" + [key]).appendChild(document.createTextNode(fullAppend));
+
+              //have to create the following if > 1 entry in maintenance schedule
+              //create <div class="card-body">
+              //  <h6 class="card-title">Maintenance One:</h6>
+              //  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              //</div>
+              //<div class="cardrule">
+              //  <hr>
+
+
+            } else {
+              $('#maintenance').toggle() ;
+            }
+
+          })
+        })
+      }
+    });
+  </script>
+  <div id="copyright">&copy; Newington Public Schools</div>
+
+</body>
+
+</html>
