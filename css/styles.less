@@ -11,6 +11,7 @@
 @black: #343a40;
 @text: lighten(@black,25%);
 
+a,
 a:hover {
   text-decoration: none;
 }
@@ -21,6 +22,27 @@ body {
   font-family: 'Catamaran';
 }
 
+.btn.btn-link {
+  padding: 0;
+}
+
+.btn-primary {
+  background-color: @paper;
+  border-color: @blue;
+  color: @blue;
+}
+
+.btn-primary:hover {
+  background-color: @blue;
+  border-color: @paper;
+  color: @paper
+}
+
+.card-title {
+  margin-bottom: auto;
+  font-weight: bold;
+}
+
 hr {
   margin: 0 20px;
 }
@@ -29,105 +51,28 @@ p {
   color: @text;
 }
 
-.alert {
-  margin: 20px;
+#accordion1 {
+  margin: 20px 20px 0;
 }
 
-.alert-success {
-  background-color: @green;
-  border-color: darken(@green,30%);
-}
-
-.alert-warning {
-  background-color: @yellow;
-  border-color: darken(@yellow,30%);
-}
-
-.alert-danger {
-  background-color: @red;
-  border-color: darken(@red,30%);
-}
-
-.btn-link :hover {
-  text-decoration: none;
-}
-
-.btn-primary {
-  color: @blue;
-  background-color: transparent;
-  border-color: @blue;
-  margin-bottom: 5px;
-}
-
-.btn-primary:hover {
-  color: lighten(@blue,85%);
-  background-color: @blue;
-  border-color: white;
-}
-
-.card {
-  color: lighten(@black,25%);
-  margin: 20px;
-}
-
-[class*="card-body"]  {
-  line-height: normal;
-  background-color: @paper;
-  padding: 20px;
-}
-
-.card-title {
-  margin-bottom: auto;
-  font-weight: bold;
-}
-
-.jumbotron {
-  background-color: @blue;
-  border-color: lighten(@blue,30%);
-  border-style: solid;
-  color: @paper;
-  margin: 20px;
-  padding: 20px;
-  text-align: center;
-}
-
-.success {
-  background-color: @green;
-  border-color: darken(@green,30%);
-  color: @text;
-}
-
-.info {
-  background-color: @orange;
-  border-color: @orange;
-  color: @paper;
-}
-
-.danger {
-  background-color: @red;
-  border-color: @red;
-  color: @text;
-}
-
-#accordion1 > .card {
-  margin-top: -20px;
-  margin-bottom: -20px;
-}
-
-#accordion1 button {
+#accordion .btn-link {
   color: @blue;
   text-decoration: none;
 }
 
-#accordion1 .card-header :hover {
+#accordion .btn-link:hover {
   color: lighten(@blue,30%);
   text-decoration: none;
 }
 
-#accordion1head {
-  color: @blue;
-  font-size: 20px;
-  margin: 20px;
+#accordion [class*="card-body"] {
+  line-height: normal;
+  background-color: @paper;
+  padding: -20px;
+}
+
+#announce {
+  margin: 20px 20px 0;
 }
 
 #announce > .card-header {
@@ -145,8 +90,18 @@ p {
   margin: 20px;
 }
 
-#jumbo1 > .display-4 {
-  font-weight: bold;
+#jumbo1 {
+  background-color: @blue;
+  border-color: lighten(@blue,30%);
+  border-style: solid;
+  color: @paper;
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+#maintenance {
+  margin: 20px 20px 0;
 }
 
 #maintenance > .card-header {
@@ -157,4 +112,16 @@ p {
 #maintenance > .body {
   background-color: @paper;
   border-color: darken(@yellow,30%);
+}
+
+#maintenance [class*="card-body"] {
+  line-height: normal;
+  background-color: @paper;
+  padding: 20px;
+}
+
+#status {
+  background-color: @green;
+  border-color: darken(@green, 40%);
+  margin: 0 20px;
 }
