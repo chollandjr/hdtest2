@@ -29,7 +29,7 @@
     </div>
   </a>
 
-  <div id="announce" class="card" hidden>
+  <div id="announce" class="card" >
     <!-- add/remove hidden tag hide/display this element -->
     <h5 class="card-header">Announcements:</h5>
     <div class="card-body">
@@ -147,7 +147,7 @@
             //console.log(item[key].name);
             //console.log(item[key].message);
 
-            if ((Date.parse(item[key].scheduled_at)) >= (Date.parse(today))) {
+            //if ((Date.parse(item[key].scheduled_at)) >= (Date.parse(today))) {
               document.getElementById("maintenance");
 
               maintdate = moment(item[key].scheduled_at).format('LLL');
@@ -186,9 +186,9 @@
               //  <hr>
 
 
-            } else {
+            //} else {
               //$('#maintenance').toggle() ;
-            }
+            //}
 
           })
         })
