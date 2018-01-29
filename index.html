@@ -29,7 +29,7 @@
     </div>
   </a>
 
-  <div id="announce" class="card" >
+  <div id="announce" class="card" hidden>
     <!-- add/remove hidden tag hide/display this element -->
     <h5 class="card-header">Announcements:</h5>
     <div class="card-body">
@@ -102,7 +102,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js"></script>
-  <script src="js/moment.min.js">//source and docs @ https://momentjs.com/</script>
+  <script src="js/moment.min.js">
+    //source and docs @ https://momentjs.com/
+  </script>
 
   <script type="text/javascript">
     $.ajax({
@@ -123,8 +125,7 @@
           }
           if (item.data.status == "danger") {
             document.getElementById("status").className = 'alert danger';
-          }
-          {
+          } {
             document.getElementById("status").innerHTML = (item.data.message) + " : Click for more details."
           };
         })
@@ -146,49 +147,58 @@
             //console.log(item[key].scheduled_at);
             //console.log(item[key].name);
             //console.log(item[key].message);
+            if ((item[key].scheduled_at) != undefined) {
+              console.log(item[key].scheduled_at);
+              console.log(item[key].name);
+              console.log(item[key].message);
+              console.log(Date.parse(item[key].scheduled_at));
+              console.log(Date.parse(today));
+              if ((Date.parse(item[key].scheduled_at)) >= (Date.parse(today))) {
 
-            //if ((Date.parse(item[key].scheduled_at)) >= (Date.parse(today))) {
-              document.getElementById("maintenance");
+                document.getElementById("maintenance");
 
-              maintdate = moment(item[key].scheduled_at).format('LLL');
-              mainttime = moment(item[key].scheduled_at).format('MM/DD/YYYY');
-              maintfromnow = moment(item[key].scheduled_at).fromNow();
-              maintcal = moment(item[key].scheduled_at).calendar();
-              mainttitle = (item[key].name) + " - " + maintfromnow + ": (" + maintcal + ")";
-              mainttext = (item[key].message);
-              //console.log(mainthead);console.log(maintmessage);console.log(maintdate);console.log(maintfromnow);console.log(maintcal);
+                maintdate = moment(item[key].scheduled_at).format('LLL');
+                mainttime = moment(item[key].scheduled_at).format('MM/DD/YYYY');
+                maintfromnow = moment(item[key].scheduled_at).fromNow();
+                maintcal = moment(item[key].scheduled_at).calendar();
+                mainttitle = (item[key].name) + " - " + maintfromnow + ": (" + maintcal + ")";
+                mainttext = (item[key].message);
+                //console.log(mainthead);console.log(maintmessage);console.log(maintdate);console.log(maintfromnow);console.log(maintcal);
 
-              //add div for first maint, populate, format
-              var oDiv = document.getElementById("maintenance");
-              //oDiv.id = 'maintenance';
+                //add div for first maint, populate, format
+                var oDiv = document.getElementById("maintenance");
+                //oDiv.id = 'maintenance';
 
-              // Create the inner div before appending to the body
-              var iDiv = document.createElement('div');
-              iDiv.className = 'card-body' + [key];
-              oDiv.appendChild(iDiv);
-              //console.log(iDiv);
+                // Create the inner div before appending to the body
+                var iDiv = document.createElement('div');
+                iDiv.className = 'card-body' + [key];
+                oDiv.appendChild(iDiv);
+                //console.log(iDiv);
 
-              //pupulate the divs
-              var appendText1 = '<h6 class="card-title">'+(mainttitle)+'</h6>';
-              var appendText2 = '<p class="card-text">'+(mainttext)+'</p>';
-              var fullAppend = (appendText1)+(appendText2);
-              //console.log(fullAppend);
-              var currentCard = '.card-body'+[key];
-              $(currentCard).append(fullAppend);
-//              document.getElementById("card-body" + [key]).appendChild(document.createTextNode(fullAppend));
+                //pupulate the divs
+                var appendText1 = '<h6 class="card-title">' + (mainttitle) + '</h6>';
+                var appendText2 = '<p class="card-text">' + (mainttext) + '</p>';
+                var fullAppend = (appendText1) + (appendText2);
+                //console.log(fullAppend);
+                var currentCard = '.card-body' + [key];
+                $(currentCard).append(fullAppend);
+                //              document.getElementById("card-body" + [key]).appendChild(document.createTextNode(fullAppend));
 
-              //have to create the following if > 1 entry in maintenance schedule
-              //create <div class="card-body">
-              //  <h6 class="card-title">Maintenance One:</h6>
-              //  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              //</div>
-              //<div class="cardrule">
-              //  <hr>
+                //have to create the following if > 1 entry in maintenance schedule
+                //create <div class="card-body">
+                //  <h6 class="card-title">Maintenance One:</h6>
+                //  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                //</div>
+                //<div class="cardrule">
+                //  <hr>
 
 
-            //} else {
-              //$('#maintenance').toggle() ;
-            //}
+                //} else {
+                //$('#maintenance').toggle() ;
+                //}
+
+              }
+            }
 
           })
         })
@@ -199,4 +209,5 @@
   <div id="copyright">&copy; Newington Public Schools</div>
 
 </body>
+
 </html>
