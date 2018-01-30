@@ -148,17 +148,18 @@
             //console.log(item[key].name);
             //console.log(item[key].message);
             if ((item[key].scheduled_at) != undefined) {
-              console.log(item[key].scheduled_at);
-              console.log(item[key].name);
-              console.log(item[key].message);
-              console.log(Date.parse(item[key].scheduled_at));
-              console.log(Date.parse(today));
-              if ((Date.parse(item[key].scheduled_at)) >= (Date.parse(today))) {
+              now = (moment(today).format('LLLL'));
+              scheduled = (moment(item[key].scheduled_at).format('LLLL'));
+              //console.log(scheduled);
+              //console.log(item[key].name);
+              //console.log(item[key].message);
+              //console.log(Date.parse(scheduled));
+              //console.log(Date.parse(now));
+
+              if ((Date.parse(scheduled)) >= (Date.parse(now))) {
 
                 document.getElementById("maintenance");
 
-                maintdate = moment(item[key].scheduled_at).format('LLL');
-                mainttime = moment(item[key].scheduled_at).format('MM/DD/YYYY');
                 maintfromnow = moment(item[key].scheduled_at).fromNow();
                 maintcal = moment(item[key].scheduled_at).calendar();
                 mainttitle = (item[key].name) + " - " + maintfromnow + ": (" + maintcal + ")";
@@ -175,11 +176,11 @@
                 oDiv.appendChild(iDiv);
                 //console.log(iDiv);
 
-                //pupulate the divs
+                //populate the divs
                 var appendText1 = '<h6 class="card-title">' + (mainttitle) + '</h6>';
                 var appendText2 = '<p class="card-text">' + (mainttext) + '</p>';
                 var fullAppend = (appendText1) + (appendText2);
-                //console.log(fullAppend);
+                console.log(fullAppend);
                 var currentCard = '.card-body' + [key];
                 $(currentCard).append(fullAppend);
                 //              document.getElementById("card-body" + [key]).appendChild(document.createTextNode(fullAppend));
@@ -191,13 +192,11 @@
                 //</div>
                 //<div class="cardrule">
                 //  <hr>
-
-
-                //} else {
-                //$('#maintenance').toggle() ;
-                //}
-
+                $('#maintenance').show();
+              } else {
+                $('#maintenance').hide();
               }
+
             }
 
           })
